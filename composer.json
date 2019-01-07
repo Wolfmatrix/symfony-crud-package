@@ -1,0 +1,29 @@
+{
+  "name": "wolf/crud",
+  "description": "Crud Package",
+  "keywords": ["create","update", "delete", "Read"],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "krishna Chaudhary",
+      "email": "kiszna9917@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "symfony/orm-pack": "^1.0",
+    "symfony/validator": "4.2.*",
+    "pagerfanta/pagerfanta": "^2.0",
+    "symfony/form": "4.2.*"
+
+  },
+  "autoload": {
+    "psr-0": { "Pagerfanta\\": "src/" }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
