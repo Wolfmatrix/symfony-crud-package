@@ -1,8 +1,8 @@
 {
-  "name": "wolf/crud",
+  "name": "crud/reusablebundle",
   "description": "Crud Package",
   "keywords": ["create","update", "delete", "Read"],
-  "type": "library",
+  "type": "symfony-bundle",
   "license": "MIT",
   "authors": [
     {
@@ -19,8 +19,11 @@
 
   },
   "autoload": {
-    "psr-0": { "Pagerfanta\\": "src/" }
+    "psr-0": {
+      "Crud\\ReusableBundle": ""
+    }
   },
+  "target-dir": "Crud/ReusableBundle",
   "extra": {
     "branch-alias": {
       "dev-master": "1.0.x-dev"
