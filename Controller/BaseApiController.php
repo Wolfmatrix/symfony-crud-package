@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Crud\ReusableBundle\Controller;
+namespace Crud\ReusableBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;

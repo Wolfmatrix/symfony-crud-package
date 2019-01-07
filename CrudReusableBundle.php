@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Crud\ReusableBundle;
+namespace Crud\ReusableBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Crud\ReusableBundle\Controller;
+namespace Crud\ReusableBundle\Controller;
 
-use App\Crud\ReusableBundle\Service\FormHelper;
-use App\Crud\ReusableBundle\Controller\BaseApiController;
+use Crud\ReusableBundle\Service\FormHelper;
+use Crud\ReusableBundle\Controller\BaseApiController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;

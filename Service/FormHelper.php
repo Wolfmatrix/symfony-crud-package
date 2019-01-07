@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Crud\ReusableBundle\Service;
+namespace Crud\ReusableBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Crud\ReusableBundle\Entity;
+namespace Crud\ReusableBundle\Entity;
 
 use Doctrine\ORM\Mapping;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
