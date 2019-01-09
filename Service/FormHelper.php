@@ -1,6 +1,6 @@
 <?php
 
-namespace Crud\ReusableBundle\Service;
+namespace Wolfmatrix\RestApiBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;

@@ -1,7 +1,7 @@
 {
-  "name": "crud/reusablebundle",
+  "name": "wolfmatrix/restapibundle",
   "description": "Crud Package",
-  "keywords": ["create","update", "delete", "Read"],
+  "keywords": ["create", "read", "update", "delete"],
   "type": "symfony-bundle",
   "license": "MIT",
   "authors": [
@@ -23,7 +23,7 @@
       "Crud\\ReusableBundle": ""
     }
   },
-  "target-dir": "Crud/ReusableBundle",
+  "target-dir": "Wolfmatrix/RestApiBundle",
   "extra": {
     "branch-alias": {
       "dev-master": "1.0.x-dev"

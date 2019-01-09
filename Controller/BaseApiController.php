@@ -1,6 +1,6 @@
 <?php
 
-namespace Crud\ReusableBundle\Controller;
+namespace Wolfmatrix\RestApiBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Crud\ReusableBundle\Entity;
+namespace Wolfmatrix\RestApiBundle\Entity;
 
 use Doctrine\ORM\Mapping;
 use Pagerfanta\Adapter\DoctrineORMAdapter;

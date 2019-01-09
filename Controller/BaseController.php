@@ -1,9 +1,9 @@
 <?php
 
-namespace Crud\ReusableBundle\Controller;
+namespace Wolfmatrix\RestApiBundle\Controller;
 
-use Crud\ReusableBundle\Service\FormHelper;
-use Crud\ReusableBundle\Controller\BaseApiController;
+use Wolfmatrix\RestApiBundle\Service\FormHelper;
+use Wolfmatrix\RestApiBundle\Controller\BaseApiController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
