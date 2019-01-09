@@ -23,9 +23,10 @@ class BaseController extends BaseApiController
         return [$urlParts, $entityName, $entityRepo, $namespace];
     }
 
-    public function saveResource (Request $request, FormHelper $formHelper)
+    public function saveResource (Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $formHelper = $this->container->get(FormHelper::class);
         list($urlParts, $entityName, $entityRepo, $namespace) = $this->parseUrl($em, $request->getPathInfo());
         $requestBody = json_decode($request->getContent(), 1) ?: [];
         $currentUser = 'abc@xyz.com';
