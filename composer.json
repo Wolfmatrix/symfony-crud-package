@@ -20,7 +20,7 @@
   },
   "autoload": {
     "psr-0": {
-      "Crud\\ReusableBundle": ""
+      "Wolfmatrix\\RestApiBundle": ""
     }
   },
   "target-dir": "Wolfmatrix/RestApiBundle",
