@@ -5,7 +5,7 @@ namespace Wolfmatrix\RestApiBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Wolfmatrix\RestApiBundle\DependencyInjection\WolfmatrixRestApiExtension;
 
-class CrudReusableBundle extends Bundle
+class WolfmatrixRestApiBundle extends Bundle
 {
     public function getContainerExtension()
     {
