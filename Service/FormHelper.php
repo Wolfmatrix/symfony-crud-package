@@ -4,9 +4,12 @@ namespace Wolfmatrix\RestApiBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Validator\Constraints\Valid;
+use Wolfmatrix\RestApiBundle\Event\ApiEvent;
+use Wolfmatrix\RestApiBundle\EventSubscriber\ApiEventSubscriber;
 
 class FormHelper
 {
@@ -84,5 +87,21 @@ class FormHelper
             }
         }
         return $errors;
+    }
+
+    public function dispatchEvent ($entity, $entityType, $action)
+    {
+        $dispatcher = new EventDispatcher();
+
+        // register subscriber
+        $subscriber = new ApiEventSubscriber();
+        $dispatcher->addSubscriber($subscriber);
+
+        $event = new ApiEvent($entity, $entityType, $action);
+
+        // dispatch
+        $dispatch = $dispatcher->dispatch(ApiEvent::CODE, $event);
+
+        return $dispatch;
     }
 }

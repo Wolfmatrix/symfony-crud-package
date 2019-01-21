@@ -62,7 +62,7 @@ class BaseController extends BaseApiController
                 }
                 return true;
             },
-            'response' => function () use ($entity, $em, $updateFlag, $currentUser) {
+            'response' => function () use ($entity, $em, $updateFlag, $currentUser, $formHelper, $entityName) {
                 $entity->setUpdatedOn(new \DateTime());
                 $entity->setUpdatedBy($currentUser);
 
@@ -72,6 +72,13 @@ class BaseController extends BaseApiController
                 }
                 $em->persist($entity);
                 $em->flush();
+
+                //dispatch event
+                if ($updateFlag) {
+                    $formHelper->dispatchEvent($entity, $entityName, self::UPDATE);
+                } else {
+                    $formHelper->dispatchEvent($entity, $entityName, self::CREATE);
+                }
 
                 return [$entity->toArray(), ($updateFlag ? self::OK : self::CREATED)];
             }
@@ -119,13 +126,18 @@ class BaseController extends BaseApiController
     {
         $em = $this->getDoctrine()->getManager();
         list($urlParts, $entityName, $entityRepo, $namespace) = $this->parseUrl($em, $request->getPathInfo());
+        $formHelper = $this->container->get(FormHelper::class);
         return $this->createResponse([
-            'response' => function () use ($em, $namespace, $urlParts) {
+            'response' => function () use ($em, $namespace, $urlParts, $formHelper, $entityName) {
 
                 $entity = $em->getRepository($namespace)->find(array_shift($urlParts));
+                $id = $entity->getId();
 
                 $em->remove($entity);
                 $em->flush();
+
+                //dispatch event
+                $formHelper->dispatchEvent(array('id'=>$id), $entityName, self::DELETE);
 
                 return [null, self::NO_CONTENT];
             }

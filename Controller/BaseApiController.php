@@ -18,6 +18,9 @@ class BaseApiController extends AbstractController
     const NOT_FOUND    = 404;
     const FORBIDDEN    = 403;
     const SERVER_ERROR = 500;
+    const CREATE = 'created';
+    const UPDATE = 'updated';
+    const DELETE = 'deleted';
 
     public function createResponse($callbacks)
     {
