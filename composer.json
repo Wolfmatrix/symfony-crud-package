@@ -23,6 +23,9 @@
       "Wolfmatrix\\RestApiBundle": ""
     }
   },
+  "require-dev": {
+    "symfony/var-dumper": "4.2.*"
+  }
   "target-dir": "Wolfmatrix/RestApiBundle",
   "extra": {
     "branch-alias": {
