@@ -15,7 +15,8 @@ class BaseController extends BaseApiController
     {
 
         $urlParts = array_filter(explode("/", $pathInfo));
-        $resource = array_shift($urlParts);
+        $flipUrlParts = array_flip($urlParts);
+        $resource = array_search(2, $flipUrlParts);
         $entityName = (ucwords(rtrim($resource, "s")));
         $namespace = "App\\Entity\\$entityName";
         $entityRepo = $em->getRepository($namespace);
@@ -29,9 +30,8 @@ class BaseController extends BaseApiController
         $formHelper = $this->container->get(FormHelper::class);
         list($urlParts, $entityName, $entityRepo, $namespace) = $this->parseUrl($em, $request->getPathInfo());
         $requestBody = json_decode($request->getContent(), 1) ?: [];
-        $currentUser = 'abc@xyz.com';
 
-        if (sizeof($urlParts ) > 0) {
+        if (sizeof($urlParts ) > 2) {
             $updateFlag = true;
             $entity = $em->getRepository($namespace)->find(array_shift($urlParts));
 
@@ -41,7 +41,7 @@ class BaseController extends BaseApiController
         }
 
         return $this->createResponse([
-            'validate' => function () use ( $requestBody, $currentUser, $updateFlag, $em, $entityRepo, $formHelper,
+            'validate' => function () use ( $requestBody, $updateFlag, $em, $entityRepo, $formHelper,
                 $entityName, $entity) {
 
                 $formNamespace = "App\\Form\\{$entityName}Type";
@@ -51,7 +51,6 @@ class BaseController extends BaseApiController
                     $requestBody,
                     $form,
                     $entityRepo,
-                    $currentUser,
                     $updateFlag
                 );
 
@@ -62,14 +61,8 @@ class BaseController extends BaseApiController
                 }
                 return true;
             },
-            'response' => function () use ($entity, $em, $updateFlag, $currentUser, $formHelper, $entityName) {
-                $entity->setUpdatedOn(new \DateTime());
-                $entity->setUpdatedBy($currentUser);
+            'response' => function () use ($entity, $em, $updateFlag, $formHelper, $entityName) {
 
-                if (!$updateFlag) {
-                    $entity->setCreatedBy($currentUser);
-                    $entity->setCreatedOn(new \DateTime());
-                }
                 $em->persist($entity);
                 $em->flush();
 
